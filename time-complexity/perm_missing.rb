@@ -24,7 +24,7 @@ require 'byebug'
 # each element of array A is an integer within the range [1..(N + 1)].
 
 
-array = [2,3,1,5,4,6]
+array = []
 
 def solution(a)
   length = a.length + 1
