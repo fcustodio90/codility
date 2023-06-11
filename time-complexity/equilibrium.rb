@@ -53,29 +53,19 @@ arr = [3,1,2,4,3] # ok
 # pivot 3 -> left = 6 right = 4, diff 2
 
 def solution(a)
-  return unless a.size > 1
+  sum_left = a[0]
+  sum_right = a.inject(0) {|sum, x| sum + x} - a[0]
 
-  possible_pivots = a.size - 1
+  diff = (sum_left - sum_right).abs
 
-  solutions_arr = []
-  
-  possible_pivots.times do |i|
-    pivot = i + 1
-    
-    # [3]
-    left_side = a.slice(0, i).sum
-    
-    # [1,2,4,3]
-    right_side = a.slice(i, possible_pivots).sum
-    
-    total = (left_side - right_side).abs
-    
-    unless (solutions_arr).include?(total)
-      solutions_arr << total
-    end
+  for i in (1..a.length - 2) do
+    sum_left += a[i]
+    sum_right -= a[i]
+    current_diff = (sum_left - sum_right).abs
+    diff = current_diff if (diff > current_diff)
   end
-
-  return solutions_arr.min
+  
+  diff
 end
 
 puts solution(arr)
