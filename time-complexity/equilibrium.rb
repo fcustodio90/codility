@@ -1,3 +1,5 @@
+require 'byebug'
+
 # A non-empty array A consisting of N integers is given. Array A represents numbers on a tape.
 
 # Any integer P, such that 0 < P < N, splits this tape into two non-empty parts: A[0], A[1], ..., A[P − 1] and A[P], A[P + 1], ..., A[N − 1].
@@ -60,7 +62,6 @@ def solution(a)
 
   solutions_arr = []
   
-  # 
   possible_pivots.times do |i|
     pivot = i + 1
     
@@ -69,10 +70,12 @@ def solution(a)
     
     # [1,2,4,3]
     right_side = a.slice(i, possible_pivots).sum
-  
-    solutions_arr << (left_side - right_side).abs
-  end
+    
+    total = (left_side - right_side).abs
 
+   
+    solutions_arr << total
+  end
 
   return solutions_arr.min
 end
