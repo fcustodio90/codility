@@ -27,14 +27,11 @@ require 'byebug'
 array = [2,3,1,5,4,6]
 
 def solution(a)
-  length = a.length
+  length = a.length + 1
   
-  max_sum = 0
-  available_sum = 0
+  max_sum = (length * (length +1) / 2)
 
-  (0..length + 1).each {|i| max_sum += i }
-
-  a.each {|i| available_sum += i}
+  available_sum = a.sum
 
   return max_sum - available_sum
 end
