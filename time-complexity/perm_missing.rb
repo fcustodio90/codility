@@ -24,7 +24,7 @@ require 'byebug'
 # each element of array A is an integer within the range [1..(N + 1)].
 
 
-array = [2,3,1,5,4,6,8]
+array = [2,3,1,5,4,6]
 
 def solution(a)
   length = a.length
@@ -32,10 +32,7 @@ def solution(a)
   max_sum = 0
   available_sum = 0
 
-  for i in 0..length + 1 do 
-    max_sum += i 
-    i += 1
-  end
+  (0..length + 1).each {|i| max_sum += i }
 
   a.each {|i| available_sum += i}
 
