@@ -46,14 +46,11 @@ arr = [3,1,2,4,3] # ok
 
 # pivot 0 -> impossible there's no left side
 
-# pivot 1 -> left = 3 right = 10, diff = -7
+# pivot 1 -> left = 3 right = 7, diff = -4
 
-# pivot 2 -> left = 4 right = 9, diff = -5
+# pivot 2 -> left = 4 right = 6, diff = -2
 
-# pivot 3 -> left = 6 right = 7, diff -1
-
-# pivot 4 -> left = 10 right = 3, diff 7
-
+# pivot 3 -> left = 6 right = 4, diff 2
 
 def solution(a)
   return unless a.size > 1
@@ -72,9 +69,10 @@ def solution(a)
     right_side = a.slice(i, possible_pivots).sum
     
     total = (left_side - right_side).abs
-
-   
-    solutions_arr << total
+    
+    unless (solutions_arr).include?(total)
+      solutions_arr << total
+    end
   end
 
   return solutions_arr.min
